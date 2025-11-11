@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header_container {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-image: url(../Templates/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Removed global div inline-block */
+
+a {
+    display: inline-block;
+}
+
+#website_logo {
+    height: 100px;
+}
+
+#navbar {
+    margin-left: 50px;
+    width: 100%;
+    background-color: #535151;
+    padding-left: 50px;
+    border-radius: 50px;
+}
+
+#bms_logo {
+    height: 100px;
+    background-color: #535151;
+}
+
+#bmsce {
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+    position: relative;
+    bottom: 50px;
+    margin-right: 200px;
+}
+
+.navigation {
+    position: relative;
+    bottom: 50px;
+    margin-right: 50px;
+    background-color: #97C4FF;
+    border-radius: 50px;
+    width: 170px;
+    height: 40px;
+    font-weight: 700;
+}
+
+#details {
+    position: absolute;
+    width: 580px;
+    height: 511px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #434141B5;
+}
+
+#details h2 {
+    color: white;
+}
+
+#details h3 {
+    color: white;
+    align-self: start;
+    margin-left: 70px;
+}
+
+#details input {
+    color: black;
+    background-color: #D9D9D9;
+    width: 433px;
+    height: 44px;
+}
+
+#create {
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 70px;
+    text-decoration: none;
+    font-size: large;
+}
+
+#forgot {
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 182px;
+    text-decoration: none;
+    font-size: large;
+}
+
+#details button {
+    width: 200px;
+    height: 44px;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: large;
+    margin-top: 20px;
+}

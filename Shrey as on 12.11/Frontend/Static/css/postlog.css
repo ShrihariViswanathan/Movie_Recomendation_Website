@@ -1,0 +1,160 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header_container {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-image: url(../Templates/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Removed global div inline-block (was breaking layout) */
+
+h1,
+form {
+    display: inline-block;
+}
+
+#website_logo {
+    height: 100px;
+}
+
+#navbar {
+    margin-left: 50px;
+    width: 100%;
+    background-color: #535151;
+    padding-left: 50px;
+    border-radius: 50px;
+}
+
+#bms_logo {
+    height: 100px;
+    background-color: #535151;
+}
+
+#bmsce {
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+    position: relative;
+    bottom: 50px;
+    margin-right: 200px;
+}
+
+.navigation {
+    position: relative;
+    bottom: 50px;
+    margin-right: 50px;
+    background-color: #97C4FF;
+    border-radius: 50px;
+    width: 170px;
+    height: 40px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#hellousername {
+    color: white;
+    font-weight: 100;
+    position: relative;
+    bottom: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#welcome {
+    width: 519px;
+    height: 170px;
+    position: absolute;
+    top: 150px;
+    left: 700px;
+    border-radius: 50px;
+    background-color: #4FFDA6DB;
+    text-align: center;
+}
+
+#welcome p {
+    font-weight: 400;
+    font-size: large;
+}
+
+/* Picture card 1 */
+#pictures1 {
+    position: absolute;
+    width: 330px;
+    height: 411px;
+    top: 370px;
+    left: 775px;
+    border-radius: 20px;
+    border: 10px solid #FFFF51;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pictures1 h2 {
+    color: white;
+}
+
+#pictures1 img {
+    width: 250px;
+    height: 180px;
+}
+
+/* Picture card 2 */
+#pictures2 {
+    position: absolute;
+    width: 330px;
+    height: 600px;
+    top: 185px;
+    left: 0px; /* You can adjust */
+    border-radius: 20px;
+    border: 10px solid #FFFF51;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pictures2 h2 {
+    color: white;
+}
+
+#pictures2 img {
+    width: 250px;
+    height: 180px;
+}
+
+/* Picture card 3 */
+#pictures3 {
+    position: absolute;
+    width: 330px;
+    height: 600px;
+    top: 188px;
+    left: 1450px;
+    border-radius: 20px;
+    border: 10px solid #FFFF51;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pictures3 h2 {
+    color: white;
+}
+
+#pictures3 img {
+    width: 250px;
+    height: 180px;
+}
