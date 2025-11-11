@@ -73,7 +73,7 @@ position:absolute;
 top: 150px;
 left: 700px;
 border-radius: 50px;
-background-color:#4FFDA6DB;
+background-color:#09c064db;
 text-align:center;
 margin-bottom:100px;
 
@@ -95,7 +95,7 @@ top: 370px;
 left: 775px;
 border-radius: 20px;
 border: 10px solid;
-border-color: #FFFF51;
+border-color: #eeee25;
 text-align:center;
 display:flex;
 flex-direction: column;
@@ -111,8 +111,14 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
 
 }
+
+#pictures1 img:hover{
+    transform: scale(1.2);
+}
+
 #pictures2{
     position:absolute;
     width: 330px;
@@ -123,7 +129,7 @@ top: 185px;
 right: 1450px;
 border-radius: 20px;
 border: 10px solid;
-border-color: #FFFF51;
+border-color: #eeee25;
 text-align:center;
 display:flex;
 flex-direction: column;
@@ -140,24 +146,32 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
 
 }
+
+#pictures2 img:hover{
+    transform: scale(1.2);
+}
+
+
 #pictures3{
     position:absolute;
     width: 330px;
     height: 600px;
+    
 
 
 top: 188px;
 left: 1450px;
 border-radius: 20px;
 border: 10px solid;
-border-color: #FFFF51;
+border-color: #eeee25;
 text-align:center;
 display:flex;
 flex-direction: column;
 
-align-items:center;
+align-items:center; 
     justify-content: flex-start;
 
 }
@@ -169,5 +183,9 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
 
+}
+#pictures3 img:hover{
+    transform: scale(1.2);
 }
