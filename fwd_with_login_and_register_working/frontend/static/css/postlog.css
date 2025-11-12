@@ -114,7 +114,12 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
 
+}
+#pictures1 img:hover
+{
+    transform: scale(1.2);
 }
 #pictures2{
     position:absolute;
@@ -143,7 +148,14 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
 
+
+}
+
+#pictures2 img:hover
+{
+    transform: scale(1.2);
 }
 #pictures3{
     position:absolute;
@@ -172,8 +184,15 @@ align-items:center;
     
     width: 250px;
 height: 180px;
+transition:transform 0.3s ease;
+
 
 }
+#pictures3 img:hover
+{
+    transform: scale(1.2);
+}
+
 #hellousername{
     color:white;
     font-weight: 100;
@@ -181,4 +200,10 @@ height: 180px;
     position:relative;
     bottom:50px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.navigation {
+    transition:background-color 0.3s ease;
+}
+.navigation:hover {
+    background-color: #689fe7;
 }
