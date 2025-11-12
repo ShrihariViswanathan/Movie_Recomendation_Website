@@ -2,7 +2,8 @@
     padding:0;
     margin:0;
 }
-.header_container {
+.header_container 
+{
     display:flex;
     height: 100px;
     width: 100%;
@@ -10,23 +11,28 @@
     justify-content: center;
     
 }
-body{
+body
+{
     background-image: url(../media/images/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-div{
+div
+{
     display:inline-block;
 }
-form{
+form
+{
     display:inline-block;
 }
 
-#website_logo{
+#website_logo
+{
     height: 100px;
 }
-#navbar{    
+#navbar
+{    
     margin-left: 50px;
     width:100%;
     background-color:#535151;
@@ -36,7 +42,8 @@ form{
 
 }
 
-#bms_logo{
+#bms_logo
+{
     height: 100px;
     background-color:#535151;
 
@@ -52,7 +59,8 @@ form{
     bottom:50px;
    margin-right:200px;
 }
-.navigation{
+.navigation
+{
     position:relative;
     bottom:50px;
     margin-right:50px;
@@ -64,7 +72,8 @@ form{
     font-weight: 700;
     cursor: pointer;
 }
-#welcome{
+#welcome
+{
   
    width: 519px;
 height: 170px;
@@ -78,14 +87,16 @@ text-align:center;
 margin-bottom:100px;
 
 }
-#welcome p{
+#welcome p
+{
     font-weight: 400;
     font-size: large;
 }
 
 
 
-#pictures1{
+#pictures1
+{
     position:absolute;
     width: 330px;
 height: 411px;
@@ -103,11 +114,13 @@ flex-direction: column;
 align-items:center;
     justify-content: flex-start;
 }
-#pictures1 h2{
+#pictures1 h2
+{
     color: white;
 
 }
-#pictures1 img{
+#pictures1 img
+{
     
     width: 250px;
 height: 180px;
@@ -115,11 +128,13 @@ transition:transform 0.3s ease;
 
 }
 
-#pictures1 img:hover{
+#pictures1 img:hover
+{
     transform: scale(1.2);
 }
 
-#pictures2{
+#pictures2
+{
     position:absolute;
     width: 330px;
 height: 600px;
@@ -138,11 +153,13 @@ align-items:center;
     justify-content: flex-start;
 
 }
-#pictures2 h2{
+#pictures2 h2
+{
     color: white;
 
 }
-#pictures2 img{
+#pictures2 img
+{
     
     width: 250px;
 height: 180px;
@@ -150,12 +167,14 @@ transition:transform 0.3s ease;
 
 }
 
-#pictures2 img:hover{
+#pictures2 img:hover
+{
     transform: scale(1.2);
 }
 
 
-#pictures3{
+#pictures3
+{
     position:absolute;
     width: 330px;
     height: 600px;
@@ -175,17 +194,26 @@ align-items:center;
     justify-content: flex-start;
 
 }
-#pictures3 h2{
+#pictures3 h2
+{
     color: white;
 
 }
-#pictures3 img{
+#pictures3 img
+{
     
     width: 250px;
 height: 180px;
 transition:transform 0.3s ease;
 
 }
-#pictures3 img:hover{
+#pictures3 img:hover
+{
     transform: scale(1.2);
+}
+.navigation {
+    transition:background-color 0.3s ease;
+}
+.navigation:hover {
+    background-color: #689fe7;
 }
