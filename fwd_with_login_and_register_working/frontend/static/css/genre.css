@@ -65,22 +65,30 @@ form{
     cursor: pointer;
 }
 #selectGenre{
+    display:flex;
     position:absolute;
+    justify-content: center;
+    align-items: flex-start;
     width: 487px;
-height: 258px;
-top: 224px;
-left: 61px;
-border-radius: 15px;
-
-opacity: 0.67;
-background-color:rgb(203, 161, 130);
+    height: 258px;
+    top: 224px;
+    left: 61px;
+    border-radius: 15px;
+    opacity: 0.67;
+    background-color:#fccb06;
 }
 #selectGenre h1{
-    color:ffffff;
+    color:black;
     text-align:center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #selectGenre input{
     background-color: white;
+}
+.navigation {
+    transition:background-color 0.3s ease;
+}
+.navigation:hover {
+    background-color: #689fe7;
 }
 
