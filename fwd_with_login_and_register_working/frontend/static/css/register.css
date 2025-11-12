@@ -130,3 +130,12 @@ a{
     margin-top: 20px;
     
 }
+.navigation {
+    transition:background-color 0.3s ease;
+}
+.navigation:hover {
+    background-color: #689fe7;
+}
+form {
+    display:inline-block;
+}
