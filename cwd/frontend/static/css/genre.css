@@ -194,7 +194,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap:wrap;
-    width: 1335px;
+    width: calc(100%-150);
     height: 374px;
     border-radius: 15px;
     background-color: #82298B;
