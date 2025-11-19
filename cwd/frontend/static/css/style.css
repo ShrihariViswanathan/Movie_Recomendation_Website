@@ -1,0 +1,121 @@
+
+body {
+  background-image: url("background.jpg"); 
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin:20px;
+}
+
+
+.website-logo {
+  width: 265px;
+  height: 90px;
+  background-image: url("website_logo.png");
+  
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-left: 50px;
+  
+}
+
+
+.navbar {
+  background: #535151;
+  width: 1400px;
+  height: 90px;
+  margin-left: 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+
+.bms-logo {
+  width: 70px;
+  height: 70px;
+  background-image: url("BMS_College_of_Engineering.svg.png");
+  background-size: cover;
+  margin-right: 10px;
+}
+
+
+.bms-text {
+  color: white;
+  font-family: serif;
+  margin-right: 50px;
+}
+
+.nav-buttons {
+  margin-left: auto;
+  margin-right: 20px;
+
+  display: flex;
+  gap: 20px;
+}
+
+
+.nav-btn {
+  background: #97C4FF;
+  padding: 12px 35px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 25px;
+  border: 2px solid #000;
+  font-size: 14px;
+  
+  transition: 0.2s ease;
+}
+
+
+.nav-btn:hover {
+  background: #b9d8ff;
+  transform: scale(1.05);
+}
+#windowspace {
+  height:30px;
+  background-color: transparent;
+}
+.ABOUTUS{
+  display: inline-block;
+  position:static;
+  margin-left:70px;
+  margin-right:70px;
+  background-color:#00246B;
+  border-radius: 10px;
+  padding:30px;
+  padding-top:10px;
+  opacity: 90;
+}
+.mainheader{
+
+  display: inline;
+  color:black;
+  background-color:#CADCFC;
+  font-size:32px;
+  text-decoration: none;
+  border-radius: 5px;
+  border-width: 3px;
+  border-color:black;
+  font-family: "Playfair Display", Georgia, serif;
+  opacity: 100%;
+  margin-bottom: 20px;
+}
+.maincontent{
+  color:wheat;
+  font-size:32px;
+  opacity: 100%;
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, sans-serif;
+  margin-top: 10px;
+}
