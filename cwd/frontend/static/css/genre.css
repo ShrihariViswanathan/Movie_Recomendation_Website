@@ -61,6 +61,19 @@ body {
     font-style: Regular;
     font-size: 32px;
     color: #1F1D1DF2;
+    cursor: pointer;
+}
+.navigation {
+    transition:background-color 0.3s ease;
+}
+.navigation:hover {
+    background-color: #689fe7;
+}
+.rate {
+    transition:background-color 0.3s ease;
+}
+.rate:hover {
+    background-color: #689fe7;
 }
 .rate {
     width: 250px;
@@ -71,6 +84,7 @@ body {
     font-style: Regular;
     font-size: 32px;
     color: #1F1D1DF2;
+    cursor: pointer;
 }
 /* navbar end */
 /* parent flex container for both select genre and unable */
@@ -188,6 +202,26 @@ body {
     text-align: center;
     color:#FFFFFF
 }
+.unable button {
+    margin-top:20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    width: 230px;
+    border-radius: 50px;
+    font-family: monaco, cursive;
+    background-color: #CF9ECC;
+    font-weight: 400;
+    font-style: Regular;
+    cursor: pointer;
+    font-size: 32px;
+    color: #1F1D1DF2;
+    transition:0.2s ease;
+}
+.unable button:hover {
+    filter: brightness(0.9);
+    transform: scale(0.99);
+}
 .action {
     display: flex;
     flex-direction: column;
@@ -207,7 +241,7 @@ body {
     align-items: stretch;
     justify-content: space-around;
     width:100%;
-    
+    margin-top: 20px;
 }
 .scrollRight {
     border-radius: 50%;
@@ -223,9 +257,14 @@ body {
     display: flex;
     justify-self: center;
     align-items: center;
+    cursor: pointer;
+    transition:0.2s ease;
 }
 .scrollRight i {
     color: #333; /* Use a dark color to stand out against the light background */
+}
+.scrollRight:hover {
+    background-color:#d47bc1 ;
 }
 
 
