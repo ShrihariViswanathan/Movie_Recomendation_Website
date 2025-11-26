@@ -1,0 +1,186 @@
+/* --- RESET & DEFAULTS --- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Jaini+Purva&display=swap');
+
+body {
+    background-image: url(../static/media/images/background2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Ensure body takes full height so flexbox works properly */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- NAVBAR START --- */
+.navbar {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    
+    /* FIX: Keeps navbar on top of everything */
+    position: relative; 
+    z-index: 100;
+}
+
+.website_logo {
+    height: 80px; /* Use height to control size, width will auto-adjust */
+    width: auto;
+    margin-right: 20px;
+}
+
+/* The Gray Bar */
+.f2 {
+    height: 100px;
+    flex-grow: 1; /* Fills remaining space */
+    border-radius: 50px;
+    background-color: #535151;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes Logo to left, Buttons to right */
+    padding: 0 30px; /* Space inside the gray bar */
+    min-width: 600px; /* Prevents bar from crushing buttons on tiny screens */
+}
+
+/* Grouping Logo and Text */
+.f2-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+}
+
+.bms_logo {
+    height: 80px;
+    width: auto;
+}
+
+.bmsce {
+    font-family: 'Jaini Purva', sans-serif; /* Fixed font syntax */
+    font-weight: 500;
+    font-style: italic; /* Fixed: 'Italic' should be lowercase */
+    font-size: 36px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-left: 20px;
+    white-space: nowrap; /* Prevents text from breaking into two lines */
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Consistent space between buttons */
+    margin-left: 20px; /* Buffer between text and buttons */
+}
+
+/* Shared Button Styles */
+.navigation, .rate {
+    /* FIX: Removed fixed width. Uses padding for fluid sizing */
+    padding: 0 25px; 
+    height: 40px;
+    border-radius: 50px;
+    background-color: #97C4FF;
+    font-weight: 700;
+    font-style: normal; /* Fixed: 'Regular' is invalid */
+    font-size: 24px; /* Reduced slightly to prevent overflow */
+    color: #1F1D1DF2;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* Keeps button text on one line */
+}
+
+.navigation:hover, .rate:hover {
+    background-color: #689fe7;
+}
+/* --- NAVBAR END --- */
+
+
+/* --- MAIN CONTENT START --- */
+.main-content-wrapper {
+    width: 100%;
+    /* Flexbox layout for the whole page content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px; /* Space below navbar */
+    padding-bottom: 50px; /* Space at bottom of page */
+}
+
+#welcome {
+    width: 90%; /* Responsive width */
+    max-width: 600px;
+    padding: 20px;
+    /* Removed absolute positioning */
+    border-radius: 50px;
+    background-color: #09c064db;
+    text-align: center;
+    margin-bottom: 60px; /* Pushes the movie grid down */
+    color: black; /* Made text readable */
+}
+
+#welcome h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+#welcome p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Movie Grid System */
+.movie-grid {
+    display: flex;
+    justify-content: center; /* Centers the 3 columns */
+    align-items: flex-start; /* Aligns tops of columns */
+    gap: 40px; /* Space between columns */
+    width: 100%;
+    max-width: 1400px;
+    flex-wrap: wrap; /* CRITICAL: Allows stacking on small screens */
+}
+
+/* Shared Style for Movie Columns */
+.movie-column {
+    width: 330px;
+    /* Removed absolute positioning */
+    border-radius: 20px;
+    border: 10px solid #eeee25;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: distinct background */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px; /* Space if they wrap */
+}
+
+.movie-column h2 {
+    color: white;
+    margin: 20px 0;
+    font-size: 24px;
+    padding: 0 10px;
+}
+
+.movie-column img {
+    width: 250px;
+    height: 180px;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.movie-column img:hover {
+    transform: scale(1.1);
+}
+/* --- MAIN CONTENT END --- */

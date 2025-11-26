@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres | CineMatch</title>
+    <link rel="stylesheet" href="../static/genre.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <img class="website_logo" src="../static/media/images/website_logo.png" alt="website logo"
+        onclick="location.href='homepage_exp.html'" style="cursor:pointer"> 
+        
+        <div class="f2">
+            <div class="f2-left">
+                <img class="bms_logo" src="../static/media/images/bmsce_logo.jpeg" alt="bmsce logo">
+                <h1 class="bmsce">BMSCE</h1>
+            </div>
+
+            <div class="buttons">
+                <form action="../templates/about.html">
+                    <button class="navigation" type="submit">ABOUT</button>
+                </form>
+                <form action="../templates/actor.html">
+                    <button class="navigation" type="submit">ACTORS</button>
+                </form>
+                <form action="../templates/login.html">
+                    <button class="navigation" type="submit">LOGIN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+        <div class="top-section">
+            
+            <div class="genre-box">
+                <h2>Select the GENRE:</h2>
+                <input class="genre-input" type="text" placeholder="Search for a genre...">
+                
+                <div class="tags-container">
+                    <input type="checkbox" id="action">
+                    <label for="action">ACTION</label>
+
+                    <input type="checkbox" id="thriller">
+                    <label for="thriller">THRILLER</label>
+
+                    <input type="checkbox" id="comedy">
+                    <label for="comedy">COMEDY</label>
+
+                    <input type="checkbox" id="romance">
+                    <label for="romance">ROMANCE</label>
+
+                    <input type="checkbox" id="drama">
+                    <label for="drama">DRAMA</label>
+
+                    <input type="checkbox" id="horror">
+                    <label for="horror">HORROR</label>
+                </div>
+            </div>
+
+            <div class="help-box">
+                <h1>UNABLE TO DECIDE?</h1>
+                <p>Don’t worry! We can help you select a movie starring your favorite actors instead.</p>
+                <form action="../templates/actor.html">
+                    <button class="help-btn" type="submit">FIND ACTORS</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="movie-gallery">
+            <h2 class="gallery-title">ACTION MOVIES:</h2>
+            
+            <div class="scroll-container">
+                <div class="movie-card"><img src="../static/media/images/john_wick.jpeg" alt="John Wick"></div>
+                <div class="movie-card"><img src="../static/media/images/terminator.jpeg" alt="Terminator"></div>
+                <div class="movie-card"><img src="../static/media/images/fall_guy.jpeg" alt="Fall Guy"></div>
+                <div class="movie-card"><img src="../static/media/images/f1.jpeg" alt="F1"></div>
+                <div class="movie-card"><img src="../static/media/images/dark_knight.jpeg" alt="Dark Knight"></div>
+            </div>
+
+            <div class="scroll-btn right">
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
