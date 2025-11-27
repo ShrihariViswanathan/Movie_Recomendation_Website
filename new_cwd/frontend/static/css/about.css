@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap');
 
 body {
-    background-image: url(../static/media/images/background2.png);
+    background-image: url(../media/images/background2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

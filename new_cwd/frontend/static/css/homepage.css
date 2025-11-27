@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaini+Purva&display=swap');
 
 body {
-    background-image: url(../static/media/images/background2.png);
+    background-image: url(../media/images/background2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
