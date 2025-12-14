@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 🚫 Prevent logged-in users from accessing register page -->
+    <script>
+        if (localStorage.getItem("isLoggedIn") === "true") {
+            window.location.href = "homepage.html";
+        }
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | CineMatch</title>
