@@ -12,7 +12,7 @@ loginForm.addEventListener('submit', async function(event) {
     };
 
 
-
+    
     console.log("Logging in with:", loginData);
 
     try {
@@ -26,11 +26,14 @@ loginForm.addEventListener('submit', async function(event) {
         const data = await response.json();
 
     if (response.ok) {
-        console.log("Login Successful:", data);
-        sessionStorage.setItem("username", data.username); // or localStorage
-        window.location.href = "../templates/postlog.html";
+    console.log("Login Successful:", data);
 
-    } else {
+    localStorage.setItem("isLoggedIn", "true");   // ✅ REQUIRED
+    localStorage.setItem("username", data.username); // match homepage logic
+
+    window.location.href = "../templates/homepage.html";
+}
+ else {
         console.error("Login error:", data);
         alert("Error: " + (data.error || "Login failed"));
     }
