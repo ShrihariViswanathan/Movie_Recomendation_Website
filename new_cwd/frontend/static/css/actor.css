@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-image: url(../media/images/background2.png);
+    background-image: url(background2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -238,11 +238,12 @@ body {
 .scroll-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centers movies if few, scrolls if many */
+    justify-content: flex-start; /* Centers movies if few, scrolls if many */
     gap: 20px;
-    overflow-x: auto; /* Adds horizontal scroll if needed */
+    overflow-x: hidden; /* Adds horizontal scroll if needed */
     padding-bottom: 10px;
-    flex-wrap: wrap; /* Allows wrapping on small screens */
+    flex-wrap: nowrap; /* Allows wrapping on small screens */
+    scroll-behavior: smooth;
 }
 
 /* Hide Scrollbar but allow scrolling */
@@ -290,6 +291,13 @@ body {
 
 .scroll-btn:hover {
     background-color: #ffffff;
+}
+.scroll-btn.left {
+    left: -20px;
+    right: auto;
+}
+.scroll-btn.left:hover{
+    background-color: white;
 }
 
 /* --- RESPONSIVE ADJUSTMENT FOR ARROW --- */
