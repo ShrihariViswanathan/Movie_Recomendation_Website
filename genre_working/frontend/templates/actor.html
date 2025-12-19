@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 🔐 POST-LOGIN PROTECTION -->
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+           window.location.href = "../templates/login.html";
+
+
+        }
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actors | CineMatch</title>
+    <link rel="stylesheet" href="../static/css/actor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <img class="website_logo" src="../static/media/images/website_logo.png" alt="website logo"
+        onclick="location.href='homepage.html'" style="cursor:pointer"> 
+        
+        <div class="f2">
+            <div class="f2-left">
+                <img class="bms_logo" src="../static/media/images/bmsce_logo.jpeg" alt="bmsce logo">
+                <h1 class="bmsce">BMSCE</h1>
+            </div>
+
+            <div class="buttons">
+                <form action="about us.html">
+                    <button class="navigation" type="submit">ABOUT</button>
+                </form>
+                <form action="genre.html">
+                    <button class="rate" type="submit">GENRE</button>
+                </form>
+
+               
+
+                <!-- 🚪 LOGOUT BUTTON -->
+                <button id="logoutBtn" class="navigation">LOGOUT</button>
+                 <!-- 👋 USER GREETING -->
+                <h3 style="color:white;" id="hellousername" class="user-greeting"></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="top-section">
+            
+            <div class="select-box">
+                <h2>ENTER ARTIST NAME:</h2>
+                <input class="artist-input" type="text" placeholder="Search for an actor...">
+                
+                <div class="tags-container">
+                    <input type="checkbox" id="brad">
+                    <label for="brad">BRAD PITT</label>
+
+                    <input type="checkbox" id="tomc">
+                    <label for="tomc">TOM CRUISE</label>
+
+                    <input type="checkbox" id="rdj">
+                    <label for="rdj">RDJ</label>
+
+                    <input type="checkbox" id="johnny">
+                    <label for="johnny">JOHNNY DEPP</label>
+
+                    <input type="checkbox" id="tomh">
+                    <label for="tomh">TOM HANKS</label>
+
+                    <input type="checkbox" id="daniel">
+                    <label for="daniel">DANIEL RADCLIFFE</label>
+                </div>
+            </div>
+
+            <div class="feedback-box">
+                <h1>FOUND YOUR MOVIES?</h1>
+                <p>Would you like to rate the movie and give a short feedback? It will help other users find their perfect movie!</p>
+                <button class="rate-btn">RATE MOVIE</button>
+            </div>
+            
+        </div>
+
+        <div class="movie-gallery">
+            <h2 class="gallery-title">BRAD PITT:</h2>
+            
+            <div class="scroll-container">
+                <div class="movie-card"><img src="../static/media/images/f1.jpeg" alt="Movie 1"></div>
+                <div class="movie-card"><img src="../static/media/images/fury.jpg" alt="Fury"></div>
+                <div class="movie-card"><img src="../static/media/images/OUAT_in_hollywood.jpg" alt="Hollywood"></div>
+                <div class="movie-card"><img src="../static/media/images/Mr.Smith.jpg" alt="Mr Smith"></div>
+                <div class="movie-card"><img src="../static/media/images/blackpanther.jpg" alt="Blackpanther"></div>
+                <div class="movie-card"><img src="../static/media/images/shawshankredemption.jpg" alt="shawshankredemption"></div>
+                <div class="movie-card"><img src="../static/media/images/godfather.jpg" alt="godfather"></div>
+                <div class="movie-card"><img src="../static/media/images/goat.jpg" alt="goat"></div>
+            </div>
+
+            <div class="scroll-btn right">
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+            <div class="scroll-btn left">
+                <i class="fa-solid fa-arrow-left-long"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 🔑 USERNAME DISPLAY + LOGOUT LOGIC -->
+    <script>
+        // Show username
+        const loggedInUsername = localStorage.getItem("username");
+        const helloEl = document.getElementById("hellousername");
+
+        if (loggedInUsername && helloEl) {
+            helloEl.innerText = `Hello, ${loggedInUsername}!`;
+        }
+
+        // Logout logic
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                const confirmLogout = confirm("Are you sure you want to logout?");
+                if (confirmLogout) {
+                    localStorage.clear();
+                    window.location.href = "login.html";
+                }
+            });
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+
+        const container = document.querySelector(".scroll-container");
+        const rightArrow = document.querySelector(".scroll-btn.right");
+        const leftArrow = document.querySelector(".scroll-btn.left");
+
+        if (container && rightArrow && leftArrow) {
+
+             rightArrow.addEventListener("click", () => {
+            container.scrollLeft += 300;
+        });
+
+        leftArrow.addEventListener("click", () => {
+            container.scrollLeft -= 300;
+        });
+        }
+
+        });
+
+
+        
+    </script>
+
+</body>
+</html>
