@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-image: url(background2.png);
+    background-image: url("../media/images/background2.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -309,3 +309,4 @@ body {
         margin-top: 20px;
     }
 }
+
