@@ -1,0 +1,72 @@
+/* Container Logic */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Glass effect on background */
+    border-radius: 20px;
+}
+
+/* Header Columns */
+.detail-header {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.poster-col img {
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.info-col { color: white; flex: 1; }
+.tagline { color: #97C4FF; font-style: italic; margin-bottom: 20px; }
+
+/* Metric Cards (The "Streamlit" look) */
+.metrics-grid, .financials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.metric-card {
+    background-color: #535151; /* Your Grey */
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 5px solid #97C4FF; /* Blue accent */
+    text-align: left;
+}
+
+.metric-card .label { color: #ccc; font-size: 12px; text-transform: uppercase; }
+.metric-card .value { color: white; font-size: 18px; font-weight: bold; margin-top: 5px; }
+
+/* Cast Grid */
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.actor-box {
+    background: #82298B; /* Your Purple */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
+.actor-box img { width: 100%; border-radius: 5px; margin-bottom: 5px; }
+
+.video-grid iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    border: 2px solid #535151;
+}
+
+.divider { border: 0.5px solid #97C4FF; opacity: 0.2; margin: 40px 0; }
+.hidden { display: none; }
