@@ -6,6 +6,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Jaini+Purva&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
     background-image: url(../media/images/background2.png);
@@ -16,6 +17,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* --- NAVBAR START --- */
@@ -47,6 +49,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Pushes Logo to left, Buttons to right */
+
+
+
     padding: 0 30px; /* Space inside the gray bar */
     min-width: 600px; /* Prevents bar from crushing buttons on tiny screens */
 }
@@ -64,7 +69,7 @@ body {
 }
 
 .bmsce {
-    font-family: 'Jaini Purva', sans-serif; /* Fixed font syntax */
+    font-family:  sans-serif; /* Fixed font syntax */
     font-weight: 500;
     font-style: italic; /* Fixed: 'Italic' should be lowercase */
     font-size: 36px;
