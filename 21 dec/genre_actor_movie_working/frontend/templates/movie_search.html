@@ -79,7 +79,29 @@
     </div>
 
 </div>
+<script>
+  // Show username
+  const loggedInUsername = localStorage.getItem("username");
+  const helloEl = document.getElementById("hellousername");
+
+  if (loggedInUsername && helloEl) {
+    helloEl.innerText = `Hello, ${loggedInUsername}!`;
+  }
+
+  // Logout logic
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      const confirmLogout = confirm("Are you sure you want to logout?");
+      if (confirmLogout) {
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+    });
+  }
+</script>
 
 <script src="../static/js/movie_search.js"></script>
 </body>
 </html>
+
