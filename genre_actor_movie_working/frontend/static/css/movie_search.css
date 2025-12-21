@@ -45,14 +45,18 @@ body {
 }
 
 .bms_logo {
-    height: 70px;
+    height: 80px;
+    width: auto;
 }
 
 .bmsce {
-    color: white;
+    font-family: 'Jaini Purva', sans-serif;
+    font-weight: 500;
+    font-style: italic;
     font-size: 36px;
+    color: #FFFFFF;
     margin-left: 20px;
-    font-family: 'Jaini Purva', cursive;
+    white-space: nowrap;
 }
 
 .buttons {
@@ -62,14 +66,21 @@ body {
 }
 
 .navigation {
-    padding: 0 25px;
+   padding: 0 25px; 
     height: 40px;
     border-radius: 50px;
-    background: #97C4FF;
+    background-color: #97C4FF;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+    color: #1F1D1DF2;
     border: none;
-    font-size: 20px;
-    font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .navigation:hover {

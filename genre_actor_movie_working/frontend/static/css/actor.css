@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-image: url(background2.png);
+    background-image: url(../media/images/background2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -237,14 +237,12 @@ body {
 
 .scroll-container {
     display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Centers movies if few, scrolls if many */
+    flex-wrap: nowrap;
     gap: 20px;
-    overflow-x: hidden; /* Adds horizontal scroll if needed */
-    padding-bottom: 10px;
-    flex-wrap: nowrap; /* Allows wrapping on small screens */
-    scroll-behavior: smooth;
+    overflow: hidden;
+    padding: 10px 60px;
 }
+
 
 /* Hide Scrollbar but allow scrolling */
 .scroll-container::-webkit-scrollbar {
@@ -255,9 +253,17 @@ body {
     border-radius: 4px;
 }
 
+.movie-card {
+    width: 150px;          /* 🔑 force uniform card width */
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
 .movie-card img {
     height: 220px; /* Fixed height for uniformity */
-    width: auto;
+    width: 100%;
+    object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
     border: 3px solid transparent;
@@ -294,8 +300,12 @@ body {
 }
 .scroll-btn.left {
     left: -20px;
-    right: auto;
 }
+
+.scroll-btn.right {
+    right: -20px;
+}
+
 .scroll-btn.left:hover{
     background-color: white;
 }

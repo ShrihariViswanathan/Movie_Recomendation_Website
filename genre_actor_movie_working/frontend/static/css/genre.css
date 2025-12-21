@@ -76,17 +76,10 @@ body {
 
 .movie-gallery {
     position: relative;
-    overflow: hidden;
-}
-
-.scroll-container {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px; /* spacing between movies */
-    padding: 0 60px; /* space on left & right to avoid hiding behind arrows */
-    box-sizing: border-box;
     
 }
+
+
 .scroll-btn {
     position: absolute;
     top: 50%;
@@ -99,15 +92,15 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 2;
+    z-index: 10;
 }
 
 .scroll-btn.left {
-    left: 0;
+    left: -20px;
 }
 
 .scroll-btn.right {
-    right: 0;
+    right: -20px;
 }
 
 
@@ -278,15 +271,14 @@ body {
 }
 
 .scroll-container {
-    left: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center; /* Center if few items, scroll if many */
+    flex-wrap: nowrap;
     gap: 20px;
-    overflow-x: auto;
-    padding: 10px;
-    flex-wrap: wrap; /* Wraps on mobile */
+    overflow: hidden;
+    padding: 10px 60px;
 }
+
+
 
 /* Custom Scrollbar */
 .scroll-container::-webkit-scrollbar {
@@ -297,9 +289,17 @@ body {
     border-radius: 4px;
 }
 
+.movie-card {
+    width: 150px;          /* 🔑 force uniform card width */
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
 .movie-card img {
-    height: 220px; /* Uniform height */
-    width: auto;
+    height: 220px; /* Fixed height for uniformity */
+    width: 100%;
+    object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
     border: 3px solid transparent;
