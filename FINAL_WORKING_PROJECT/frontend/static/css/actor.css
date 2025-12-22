@@ -237,6 +237,8 @@ body {
     flex-wrap: nowrap;
     gap: 20px;
     overflow-x: auto;
+    align-items: center;
+    justify-content: center;
     padding: 10px 60px;
 }
 
