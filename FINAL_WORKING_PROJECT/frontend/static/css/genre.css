@@ -80,6 +80,16 @@ body {
 }
 
 
+.scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 60px;
+}
+
 .scroll-btn {
     position: absolute;
     top: 50%;
@@ -102,7 +112,6 @@ body {
 .scroll-btn.right {
     right: -20px;
 }
-
 
 
 .navigation, .rate {
@@ -270,13 +279,7 @@ body {
     font-family: monospace;
 }
 
-.scroll-container {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    overflow: hidden;
-    padding: 10px 60px;
-}
+
 
 
 
