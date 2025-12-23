@@ -122,25 +122,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function renderDropdown() {
-        const q = nodes.input.value.trim().toLowerCase();
-        nodes.dropdown.innerHTML = "";
-        if (!q) { nodes.dropdown.style.display = "none"; return; }
-        currentMatches = GENRES.filter(g => g.toLowerCase().includes(q));
-        if (currentMatches.length === 0) {
-            nodes.dropdown.innerHTML = '<div class="genre-suggestion no-result">No genres found</div>';
-        } else {
-            currentMatches.forEach(g => {
-                const div = document.createElement("div");
-                div.className = "genre-suggestion";
-                div.innerText = g;
-                div.onclick = () => selectGenre(g);
-                nodes.dropdown.appendChild(div);
-            });
-        }
-        nodes.dropdown.style.display = "block";
-        activeIndex = 0;
-        highlight();
+    const q = nodes.input.value.trim().toLowerCase();
+    nodes.dropdown.innerHTML = "";
+
+    if (!q) {
+        nodes.dropdown.style.display = "none";
+        return;
     }
+
+    currentMatches = [...new Set(
+        GENRES.filter(g => g.toLowerCase().includes(q))
+    )];
+
+    if (currentMatches.length === 0) {
+        nodes.dropdown.innerHTML =
+            '<div class="genre-suggestion no-result">No genres found</div>';
+    } else {
+        currentMatches.forEach(g => {
+            const div = document.createElement("div");
+            div.className = "genre-suggestion";
+            div.innerText = g;
+            div.onclick = () => selectGenre(g);
+            nodes.dropdown.appendChild(div);
+        });
+    }
+
+    nodes.dropdown.style.display = "block";
+    activeIndex = 0;
+    highlight();
+}
+
 
     function highlight() {
         const items = nodes.dropdown.querySelectorAll(".genre-suggestion");
