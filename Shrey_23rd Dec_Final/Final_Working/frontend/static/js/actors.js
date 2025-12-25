@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    let renderRequestId = 0;
+
     const API_BASE = `${location.protocol}//${location.hostname}:8000`;
     const VISIBLE = 5;
 
@@ -38,46 +40,71 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     /* ================= SEARCH DROPDOWN ================= */
-    async function renderDropdown() {
-        const q = nodes.input.value.trim();
-        nodes.dropdown.innerHTML = "";
-        if (!q) { nodes.dropdown.style.display = "none"; currentMatches = []; return; }
+ async function renderDropdown() {
+    const q = nodes.input.value.trim();
+    const requestId = ++renderRequestId; // 👈 unique id for this call
 
-        try {
-            let data;
-            if (actorCache.has(q.toLowerCase())) {
-                data = actorCache.get(q.toLowerCase());
-            } else {
-                const res = await fetch(`${API_BASE}/search/actor?name=${encodeURIComponent(q)}`, { credentials: "include" });
-                data = await res.json();
-                data = Array.isArray(data) ? data : (data.id ? [data] : []);
-                actorCache.set(q.toLowerCase(), data);
-            }
+    nodes.dropdown.innerHTML = "";
 
-            currentMatches = data;
-            activeIndex = 0;
-
-            if (currentMatches.length === 0) {
-                const div = document.createElement("div");
-                div.className = "suggestion no-result";
-                div.innerText = "No actors found";
-                nodes.dropdown.appendChild(div);
-            } else {
-                currentMatches.forEach(actor => {
-                    const div = document.createElement("div");
-                    div.className = "suggestion";
-                    div.innerText = actor.name;
-                    div.onclick = () => selectActor(actor.name);
-                    nodes.dropdown.appendChild(div);
-                });
-            }
-
-            nodes.dropdown.style.display = "block";
-            highlightDropdown();
-        } catch (e) {
-            console.error("Actor search failed", e);
-        }
+    if (!q) {
+        nodes.dropdown.style.display = "none";
+        currentMatches = [];
+        return;
     }
+
+    try {
+        let data;
+
+        if (actorCache.has(q.toLowerCase())) {
+            data = actorCache.get(q.toLowerCase());
+        } else {
+            const res = await fetch(
+                `${API_BASE}/search/actor?name=${encodeURIComponent(q)}`,
+                { credentials: "include" }
+            );
+
+            data = await res.json();
+            data = Array.isArray(data) ? data : (data.id ? [data] : []);
+            actorCache.set(q.toLowerCase(), data);
+        }
+
+        // ❗ STOP if this is NOT the latest request
+        if (requestId !== renderRequestId) return;
+
+        // ✅ Deduplicate
+        currentMatches = [
+            ...new Map(
+                data.map(actor => [actor.name.toLowerCase(), actor])
+            ).values()
+        ];
+
+        activeIndex = 0;
+        nodes.dropdown.innerHTML = "";
+
+        if (currentMatches.length === 0) {
+            const div = document.createElement("div");
+            div.className = "suggestion no-result";
+            div.innerText = "No actors found";
+            nodes.dropdown.appendChild(div);
+        } else {
+            currentMatches.forEach(actor => {
+                const div = document.createElement("div");
+                div.className = "suggestion";
+                div.innerText = actor.name;
+                div.onclick = () => selectActor(actor.name);
+                nodes.dropdown.appendChild(div);
+            });
+        }
+
+        nodes.dropdown.style.display = "block";
+        highlightDropdown();
+
+    } catch (e) {
+        console.error("Actor search failed", e);
+    }
+}
+
+
 
     function highlightDropdown() {
         const items = nodes.dropdown.querySelectorAll(".suggestion");
