@@ -19,7 +19,10 @@ registerForm.addEventListener('submit', async function(event) {
         confirmPasswordFromInput: confirmPassword.value
     };
 
-
+    if (/\d/.test(username.value)) {
+        alert("Username cannot contain numbers.");
+        return; // stop submission
+    }
 
     console.log("Registering with:", registerData);
 
