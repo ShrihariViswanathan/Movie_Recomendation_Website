@@ -24,6 +24,11 @@ registerForm.addEventListener('submit', async function(event) {
         return; // stop submission
     }
 
+    if (/\D/.test(phone.value)) {
+        alert("Phone number must contain only digits.");
+        return;
+    }
+
     console.log("Registering with:", registerData);
 
     try {
