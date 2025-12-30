@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/css/movie_details.css">
+    <meta charset="UTF-8">
+    <title>Movie Details</title>
+
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "../templates/login.html";
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="navbar">
+    <img class="website_logo" src="../static/media/images/website_logo.png"
+         onclick="location.href='homepage.html'" style="cursor:pointer">
+
+    <div class="f2">
+        <div class="f2-left">
+            <img class="bms_logo" src="../static/media/images/bmsce_logo.jpeg">
+            <h1 class="bmsce">BMSCE</h1>
+        </div>
+
+        <div class="buttons">
+            <form action="../templates/trendrec.html">
+                <button class="navigation" type="submit">TRENDING</button>
+            </form>
+
+            <form action="../templates/trendrec.html">
+                <button class="rate" type="submit">RECENT</button>
+            </form>
+
+            <form action="../templates/genre.html">
+                <button class="navigation" type="submit">WATCHLIST</button>
+            </form>
+
+            <button id="logoutBtn" class="rate">LOGOUT</button>
+            <h3 id="hellousername" class="user-greeting" style="color:white;margin-left:10px;"></h3>
+        </div>
+    </div>
+</div>
+
+<div class="main-container" id="details-content">
+    <h2>Loading…</h2>
+</div>
+
+<script>
+const API_BASE = `${location.protocol}//${location.hostname}:8000`;
+const movieId = new URLSearchParams(location.search).get("id");
+
+const img = (path, size="w500") =>
+    path ? `https://image.tmdb.org/t/p/${size}${path}` :
+           "../static/media/images/default_movie.png";
+
+async function loadMovie() {
+    try {
+        const res = await fetch(`${API_BASE}/movie/details/${movieId}`, {
+            credentials: "include"
+        });
+        const d = await res.json();
+
+        const crew = d.credits?.crew || [];
+        const cast = d.credits?.cast || [];
+
+        const directors = crew.filter(c => c.job === "Director")
+                              .map(c => c.name).join(", ") || "N/A";
+
+        const writers = crew.filter(c => c.department === "Writing")
+                            .map(c => c.name).slice(0,3).join(", ") || "N/A";
+
+        document.getElementById("details-content").innerHTML = `
+        <div class="hero">
+            <img class="poster" src="${img(d.poster_path)}">
+            <div>
+                <h1>${d.title}</h1>
+
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="m-label">Rating</div>
+                        <div class="m-value">⭐ ${d.vote_average}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="m-label">Runtime</div>
+                        <div class="m-value">${d.runtime} min</div>
+                    </div>
+                </div>
+
+                <p><b>Genres:</b> ${d.genres.map(g => g.name).join(", ")}</p>
+                <p><b>Director:</b> ${directors}</p>
+                <p><b>Writer:</b> ${writers}</p>
+
+                <!-- ✅ FIXED RATE BUTTON -->
+                <button class="rateBtn" id="rateBtn">RATE</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Overview</h2>
+            <p>${d.overview}</p>
+        </div>
+        `;
+
+        // ✅ PASS MOVIE ID CORRECTLY
+        document.getElementById("rateBtn").addEventListener("click", () => {
+            window.location.href = `rating.html?id=${movieId}`;
+        });
+
+    } catch {
+        document.getElementById("details-content").innerHTML =
+            "<h2>Failed to load movie.</h2>";
+    }
+}
+
+
+
+
+loadMovie();
+</script>
+
+<script>
+    const loggedInUsername = localStorage.getItem("username");
+    const helloEl = document.getElementById("hellousername");
+
+    if (loggedInUsername && helloEl) {
+        helloEl.innerText = `Hello, ${loggedInUsername}!`;
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = "login.html";
+    });
+</script>
+
+</body>
+</html>
