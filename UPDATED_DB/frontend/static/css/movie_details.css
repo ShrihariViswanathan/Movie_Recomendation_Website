@@ -16,6 +16,7 @@
     --metric-bg:#262730;
 }
 
+
 /* --- BODY --- */
 body {
     background-image: url(../media/images/background2.png);
@@ -29,8 +30,97 @@ body {
 
     font-family: 'Roboto', sans-serif;
     color: white;
-    padding: 20px;
+    
 }
+
+/* --- NAVBAR START --- */
+.navbar {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    
+    /* FIX: Keeps navbar on top of everything */
+    position: relative; 
+    z-index: 100;
+}
+
+.website_logo {
+    height: 80px; /* Use height to control size, width will auto-adjust */
+    width: auto;
+    margin-right: 20px;
+}
+
+/* The Gray Bar */
+.f2 {
+    height: 100px;
+    flex-grow: 1; /* Fills remaining space */
+    border-radius: 50px;
+    background-color: #535151;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes Logo to left, Buttons to right */
+
+
+
+    padding: 0 30px; /* Space inside the gray bar */
+    min-width: 600px; /* Prevents bar from crushing buttons on tiny screens */
+}
+
+/* Grouping Logo and Text */
+.f2-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+}
+
+.bms_logo {
+    height: 80px;
+    width: auto;
+}
+
+.bmsce {
+    font-family:  sans-serif; /* Fixed font syntax */
+    font-weight: 500;
+    font-style: italic; /* Fixed: 'Italic' should be lowercase */
+    font-size: 36px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-left: 20px;
+    white-space: nowrap; /* Prevents text from breaking into two lines */
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Consistent space between buttons */
+    margin-left: 15px; /* Buffer between text and buttons */
+}
+
+/* Shared Button Styles */
+.navigation, .rate {
+    /* FIX: Removed fixed width. Uses padding for fluid sizing */
+    padding: 0 25px; 
+    height: 40px;
+    border-radius: 50px;
+    background-color: #97C4FF;
+    font-weight: 700;
+    font-style: normal; /* Fixed: 'Regular' is invalid */
+    font-size: 24px; /* Reduced slightly to prevent overflow */
+    color: #1F1D1DF2;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* Keeps button text on one line */
+}
+
+.navigation:hover, .rate:hover {
+    background-color: #689fe7;
+}
+/* --- NAVBAR END --- */
+
 
 /* --- BACK BUTTON --- */
 .back-btn {
@@ -41,8 +131,11 @@ body {
     border-radius: 6px;
     cursor: pointer;
     margin-bottom: 20px;
+    margin-left:20px;
     width: fit-content;
     align-self: flex-start; /* prevents stretching */
+
+
 }
 
 /* --- MAIN CONTAINER --- */
@@ -141,4 +234,16 @@ iframe {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+.rateBtn,.watchListBtn{
+    color:white;
+    background-color:green;
+    border-radius: 10px;
+    font-size:large;
+    padding:20px;
+    width: fit-content;
+    cursor: pointer;
+}
+.rateBtn:hover,.watchListBtn:hover {
+    filter:brightness(.9);
 }

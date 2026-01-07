@@ -19,7 +19,15 @@ registerForm.addEventListener('submit', async function(event) {
         confirmPasswordFromInput: confirmPassword.value
     };
 
+    if (/\d/.test(username.value)) {
+        alert("Username cannot contain numbers.");
+        return; // stop submission
+    }
 
+    if (/\D/.test(phone.value)) {
+        alert("Phone number must contain only digits.");
+        return;
+    }
 
     console.log("Registering with:", registerData);
 
@@ -45,4 +53,3 @@ registerForm.addEventListener('submit', async function(event) {
         alert("Error: " + error);
     }
 });
-

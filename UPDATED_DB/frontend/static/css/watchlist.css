@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    background-image: url(../media/images/background2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #CF9ECC;
+}
+
+#watchlist-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    color:white
+}
+
+.movie-card {
+    background-color: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+.movie-info h3 {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 5px;
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+#status-text {
+    grid-column: 1 / -1;
+    text-align: center;
+}

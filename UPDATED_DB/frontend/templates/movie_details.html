@@ -2,16 +2,47 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../static/css/movie_details.css">
-<meta charset="UTF-8">
-<title>Movie Details</title>
+    <meta charset="UTF-8">
+    <title>Movie Details</title>
 
-
-
+    <script>
+        // Login Protection
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "../templates/login.html";
+        }
+    </script>
 </head>
 
 <body>
 
-<button class="back-btn" onclick="history.back()">← Back</button>
+<div class="navbar">
+    <img class="website_logo" src="../static/media/images/website_logo.png"
+         onclick="location.href='homepage.html'" style="cursor:pointer">
+
+    <div class="f2">
+        <div class="f2-left">
+            <img class="bms_logo" src="../static/media/images/bmsce_logo.jpeg">
+            <h1 class="bmsce">BMSCE</h1>
+        </div>
+
+        <div class="buttons">
+            <form action="../templates/trendrec.html">
+                <button class="navigation" type="submit">TRENDING</button>
+            </form>
+
+            <form action="../templates/trendrec.html">
+                <button class="rate" type="submit">RECENT</button>
+            </form>
+
+            <form action="../templates/watchlist.html">
+                <button class="navigation" type="submit">WATCHLIST</button>
+            </form>
+
+            <button id="logoutBtn" class="rate">LOGOUT</button>
+            <h3 id="hellousername" class="user-greeting" style="color:white;margin-left:10px;"></h3>
+        </div>
+    </div>
+</div>
 
 <div class="main-container" id="details-content">
     <h2>Loading…</h2>
@@ -20,117 +51,116 @@
 <script>
 const API_BASE = `${location.protocol}//${location.hostname}:8000`;
 const movieId = new URLSearchParams(location.search).get("id");
+const userId = localStorage.getItem("user_id");
+
+let currentMovie = null; // ✅ added
 
 const img = (path, size="w500") =>
     path ? `https://image.tmdb.org/t/p/${size}${path}` : "../static/media/images/default_movie.png";
 
 async function loadMovie() {
     try {
-        const res = await fetch(`${API_BASE}/movie/details/${movieId}`, { credentials:"include" });
+        const res = await fetch(`${API_BASE}/movie/details/${movieId}`, { credentials: "include" });
         if (!res.ok) throw new Error(res.status);
         const d = await res.json();
 
+        // ✅ store movie data for watchlist
+        currentMovie = {
+            movie_id: d.id,
+            title: d.title,
+            poster_path: d.poster_path
+        };
+
+        let userRatingHtml = "";
+        try {
+            const ratingRes = await fetch(`${API_BASE}/movie/user-rating/${userId}/${movieId}`);
+            const ratingData = await ratingRes.json();
+            
+            if (ratingData.rating) {
+                userRatingHtml = `
+                    <div class="metric-card" style="border: 1px solid #22c55e;">
+                        <div class="m-label">User's Rating</div>
+                        <div class="m-value">⭐ ${ratingData.rating}</div>
+                    </div>
+                `;
+            }
+        } catch {}
+
         const crew = d.credits?.crew || [];
         const cast = d.credits?.cast || [];
-
-        const directors = crew.filter(c=>c.job==="Director").map(c=>c.name).join(", ") || "N/A";
-        const writers = crew.filter(c=>c.department==="Writing").map(c=>c.name).slice(0,3).join(", ") || "N/A";
+        const directors = crew.filter(c => c.job === "Director").map(c => c.name).join(", ") || "N/A";
+        const writers = crew.filter(c => c.department === "Writing").map(c => c.name).slice(0,3).join(", ") || "N/A";
 
         document.getElementById("details-content").innerHTML = `
         <div class="hero">
             <img class="poster" src="${img(d.poster_path)}">
             <div>
                 <h1>${d.title}</h1>
-                <p style="color:var(--accent-blue); font-style:italic">${d.tagline || ""}</p>
 
                 <div class="metrics">
-                    <div class="metric-card"><div class="m-label">Rating</div><div class="m-value">⭐ ${d.vote_average} (${d.vote_count})</div></div>
+                    <div class="metric-card">
+                        <div class="m-label">TMDB Rating</div>
+                        <div class="m-value">⭐ ${d.vote_average.toFixed(1)} (${d.vote_count})</div>
+                    </div>
+                    ${userRatingHtml}
                     <div class="metric-card"><div class="m-label">Runtime</div><div class="m-value">${d.runtime} min</div></div>
                     <div class="metric-card"><div class="m-label">Release</div><div class="m-value">${d.release_date}</div></div>
-                    <div class="metric-card"><div class="m-label">Language</div><div class="m-value">${d.original_language.toUpperCase()}</div></div>
                 </div>
 
                 <p><b>Genres:</b> ${d.genres.map(g=>g.name).join(", ")}</p>
                 <p><b>Director:</b> ${directors}</p>
                 <p><b>Writer:</b> ${writers}</p>
-                ${d.external_ids?.imdb_id ? `<p><b>IMDb:</b> <a target="_blank" href="https://www.imdb.com/title/${d.external_ids.imdb_id}">${d.external_ids.imdb_id}</a></p>` : ""}
+
+                <button class="rateBtn" id="rateBtn">RATE MOVIE</button>
+                <button class="watchListBtn" id="watchListBtn">ADD TO WATCHLIST</button>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>Overview</h2>
-            <p>${d.overview}</p>
-        </div>
-
-        <div class="section">
-            <h2>🎭 Cast</h2>
-            <div class="cast-grid">
-                ${cast.slice(0,18).map(a=>`
-                    <div class="actor-card">
-                        <img class="actor-img" src="${img(a.profile_path,'w185')}">
-                        <b>${a.name}</b><br>
-                        <span style="color:var(--accent-blue)">${a.character}</span>
-                    </div>
-                `).join("")}
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🎥 Trailers</h2>
-            ${d.videos.results.filter(v=>v.site==="YouTube").slice(0,2).map(v=>`
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/${v.key}" allowfullscreen></iframe>
-                <p>${v.name}</p>
-            `).join("") || "<p>No videos available.</p>"}
-        </div>
-
-        <div class="section">
-            <h2>🏷 Keywords</h2>
-            ${d.keywords?.keywords?.length
-                ? d.keywords.keywords.map(k=>`<span class="tag">${k.name}</span>`).join("")
-                : "<p>None</p>"
-            }
-        </div>
-
-        <div class="section">
-            <h2>📅 Release Dates</h2>
-            ${d.release_dates.results.map(c=>`
-                <div class="box">
-                    <b>${c.iso_3166_1}</b>
-                    <ul>${c.release_dates.map(r=>`
-                        <li>${r.release_date.split("T")[0]} ${r.certification ? `(${r.certification})`:""}</li>
-                    `).join("")}</ul>
-                </div>
-            `).join("")}
-        </div>
-
-        <div class="section">
-            <h2>📺 Watch Providers</h2>
-            ${Object.entries(d["watch/providers"].results || {}).map(([c,p])=>`
-                <div class="box">
-                    <b>${c}</b><br>
-                    ${p.flatrate?.map(f=>`
-                        <img width="40" src="${img(f.logo_path,'w92')}"> ${f.provider_name}
-                    `).join("") || "No streaming info"}
-                </div>
-            `).join("") || "<p>No providers listed.</p>"}
-        </div>
-
-        <div class="section">
-            <h2>📝 Reviews</h2>
-            ${d.reviews.results.slice(0,3).map(r=>`
-                <div class="box">
-                    <b>${r.author}</b>
-                    <p>${r.content.slice(0,500)}…</p>
-                </div>
-            `).join("") || "<p>No reviews.</p>"}
         </div>
         `;
-    } catch {
+
+        document.getElementById("rateBtn").onclick = () =>
+            window.location.href = `rating.html?id=${movieId}`;
+
+        document.getElementById("watchListBtn").onclick = addToWatchlist;
+
+    } catch (err) {
         document.getElementById("details-content").innerHTML = "<h2>Failed to load movie.</h2>";
+    }
+}
+
+async function addToWatchlist() {
+    if (!userId || !currentMovie) {
+        alert("Login required");
+        return;
+    }
+
+    const res = await fetch(`${API_BASE}/watchlist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            user_id: userId,
+            ...currentMovie
+        })
+    });
+
+    if (res.ok) {
+        alert("✅ Added to watchlist");
+    } else {
+        alert("Already in watchlist or error");
     }
 }
 
 loadMovie();
 </script>
+
+<script>
+    const username = localStorage.getItem("username");
+    if (username) document.getElementById("hellousername").innerText = `Hello, ${username}!`;
+
+    document.getElementById("logoutBtn").onclick = () => {
+        localStorage.clear();
+        window.location.href = "login.html";
+    };
+</script>
+
 </body>
 </html>

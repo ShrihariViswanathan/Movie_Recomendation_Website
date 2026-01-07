@@ -1,21 +1,25 @@
 const { tmdbRequest } = require("./tmdb");
 
-
 const checkTMDBKey = async (req, res, next) => {
-const tmdbKey = req.cookies.tmdbKey;
+  const tmdbKey = req.cookies.tmdbKey;
 
+  // 🔴 No API key
+  if (!tmdbKey) {
+    return res.status(401).json({
+      error: "TMDB_KEY_MISSING"
+    });
+  }
 
-if (!tmdbKey)
-return res.status(401).sendFile("tmdb_key.html", { root: "frontend/templates" });
-
-
-try {
-await tmdbRequest("/configuration", tmdbKey);
-next();
-} catch (err) {
-return res.status(403).sendFile("tmdb_key.html", { root: "frontend/templates" });
-}
+  try {
+    // 🔎 Validate key with TMDB
+    await tmdbRequest("/configuration", tmdbKey);
+    next();
+  } catch (err) {
+    // 🔴 Invalid / expired API key
+    return res.status(403).json({
+      error: "TMDB_KEY_INVALID"
+    });
+  }
 };
-
 
 module.exports = { checkTMDBKey };
